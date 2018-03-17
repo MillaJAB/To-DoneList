@@ -9,7 +9,7 @@
     	border-collapse: collapse;
 	}
 	th, td {
-    	padding: 3px 10px 0px 10px;
+    	padding: 3px 10px 7px 10px;
 	}
 	.centerColumn {
 		text-align: center;
@@ -17,6 +17,16 @@
 
 	input {
 		margin-top: 10px;
+	}
+	button {
+		margin-top: 10px;
+	}
+	form {
+		border-style: solid;
+		margin-top: 10px;
+		width: 300px;
+		padding: 10px;
+		padding-left: 25px;
 	}
 	</style>
 </head>
@@ -30,6 +40,7 @@
     		<th>Task</th>
     		<th>Due</th>
     		<th>Time Est</th>
+    		<th>Complete?</th>
   		</tr>
   		<tr class="centerColumn">
     		<td>1</td>
@@ -37,6 +48,7 @@
     		<td>Locate a SEO plugin</td>
     		<td>3/13</td>
     		<td>30 min</td>
+    		<td><input type="checkbox"></td>
   		</tr>
   		<tr>
     		<td>Eve</td>
@@ -45,9 +57,23 @@
   		</tr>
 	</table>
 
-	Task
-	<input id="textField" type="text" name="Task">
-	<button onclick="setThings()">Submit</button>
+<form>
+	Project:
+	<input id="projectField" type="text" name="Priority"><br>
+	Task:
+	<input id="taskField" type="text" name="Task"><br>
+	Priority:
+	<input class="priorityRadioBtn" type="radio" name="priority" value="1"> 1
+	<input class="priorityRadioBtn" type="radio" name="priority" value="2"> 2
+	<input class="priorityRadioBtn" type="radio" name="priority" value="3"> 3
+	<input class="priorityRadioBtn" type="radio" name="priority" value="4"> 4<br>
+	Due Date:
+	<input type="date" name="dueDate"><br>
+	Time Estimate:
+	<input type="text" name="timeEst">
+
+</form>
+<button onclick="setThings()">Submit</button>
 
 </body>
 </html>
@@ -67,12 +93,6 @@
 </script>
 
 <script>
-	// writeNewTask('Run ethernet cord', 3, 'Misc', '3/18', '1 hour')
-
-	function submitFunction() {
-		console.log(document.getElementById("textField").value);
-	}
-
 	// Get a reference to the database service
 	var database = firebase.database();
 
@@ -87,9 +107,15 @@
 	}
 
 	function setThings() {
-		var taskText = document.getElementById("textField").value;
+		var taskText = document.getElementById("taskField").value;
+		//var prioritySelect = document.getElementsByClassName("priorityRadioBtn").value;
 		console.log(taskText);
-		writeNewTask(taskText, 3, 'Misc', '3/18', '1 hour')
+		writeNewTask(taskText, 2, 'Misc', '3/18', '1 hour')
+		clearFields();
+	}
+
+	function clearFields() {
+		document.getElementById("taskField").value = "";
 	}
 
 </script>
