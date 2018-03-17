@@ -47,8 +47,10 @@
 
 	Task
 	<input id="textField" type="text" name="Task">
-	<button onclick="submitFunction()">Submit</button>
+	<button onclick="setThings()">Submit</button>
 
+</body>
+</html>
 
 <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
 <script>
@@ -65,6 +67,8 @@
 </script>
 
 <script>
+	// writeNewTask('Run ethernet cord', 3, 'Misc', '3/18', '1 hour')
+
 	function submitFunction() {
 		console.log(document.getElementById("textField").value);
 	}
@@ -72,14 +76,20 @@
 	// Get a reference to the database service
 	var database = firebase.database();
 
-	function writeUserData(userId, name, email, imageUrl) {
-  		firebase.database().ref('users/' + userId).set({
-   			 username: name,
-    		 email: email,
-   			 profile_picture : imageUrl
- 	 });
-}
-</script>
+	function writeNewTask(taskName, priority, project, dueDate, timeEstimate) {
+  		firebase.database().ref('tasks/' + taskName).set({
+  			 priority: priority, 
+   			 project: project,
+    		 taskName: taskName,
+   			 dueDate : dueDate,
+   			 timeEstimate: timeEstimate
+ 	 	});
+	}
 
-</body>
-</html>
+	function setThings() {
+		var taskText = document.getElementById("textField").value;
+		console.log(taskText);
+		writeNewTask(taskText, 3, 'Misc', '3/18', '1 hour')
+	}
+
+</script>
