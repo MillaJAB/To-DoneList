@@ -46,10 +46,13 @@
 	</table>
 
 	Task
-	<input type="text" name="Task">
-	<button>Submit</button>
+	<input id="textField" type="text" name="Task">
+	<button onclick="submitFunction()">Submit</button>
 
 <script>
+	function submitFunction() {
+		console.log(document.getElementById("textField").value);
+	}
 </script>
 
 </body>
