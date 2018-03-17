@@ -49,6 +49,21 @@
 	<input id="textField" type="text" name="Task">
 	<button onclick="submitFunction()">Submit</button>
 
+
+<script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAF_vhCFAmopW6O6-nsbxpT9EAx1wJVIjI",
+    authDomain: "todonelist-5df2e.firebaseapp.com",
+    databaseURL: "https://todonelist-5df2e.firebaseio.com",
+    projectId: "todonelist-5df2e",
+    storageBucket: "",
+    messagingSenderId: "81191745304"
+  };
+  firebase.initializeApp(config);
+</script>
+
 <script>
 	function submitFunction() {
 		console.log(document.getElementById("textField").value);
