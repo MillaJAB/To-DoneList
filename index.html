@@ -68,7 +68,7 @@
 	<input class="priorityRadioBtn" type="radio" name="priority" value="3"> 3
 	<input class="priorityRadioBtn" type="radio" name="priority" value="4"> 4<br>
 	Due Date:
-	<input type="date" name="dueDate"><br>
+	<input id="datePicker" type="date" name="dueDate"><br>
 	Time Estimate:
 	<input type="text" name="timeEst">
 
@@ -106,16 +106,20 @@
  	 	});
 	}
 
+// Need to check if things are empty. Bug deletes database if things are left empty
 	function setThings() {
 		var taskText = document.getElementById("taskField").value;
+		var projectText = document.getElementById("projectField").value;
+		var datePicked = document.getElementById("datePicker").value;
 		//var prioritySelect = document.getElementsByClassName("priorityRadioBtn").value;
-		console.log(taskText);
-		writeNewTask(taskText, 2, 'Misc', '3/18', '1 hour')
+		writeNewTask(taskText, 2, projectText, datePicked, '1 hour')
 		clearFields();
 	}
 
 	function clearFields() {
+		document.getElementById("projectField").value = "";
 		document.getElementById("taskField").value = "";
+		document.getElementById("datePicker").value = "";
 	}
 
 </script>
