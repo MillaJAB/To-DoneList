@@ -63,10 +63,10 @@
 	Task:
 	<input id="taskField" type="text" name="Task"><br>
 	Priority:
-	<input class="priorityRadioBtn" type="radio" name="priority" value="1"> 1
-	<input class="priorityRadioBtn" type="radio" name="priority" value="2"> 2
-	<input class="priorityRadioBtn" type="radio" name="priority" value="3"> 3
-	<input class="priorityRadioBtn" type="radio" name="priority" value="4"> 4<br>
+	<input id="radioBtn1" type="radio" name="priority" value="1"> 1
+	<input id="radioBtn2" type="radio" name="priority" value="2"> 2
+	<input id="radioBtn3" type="radio" name="priority" value="3"> 3
+	<input id="radioBtn4" type="radio" name="priority" value="4"> 4<br>
 	Due Date:
 	<input id="datePicker" type="date" name="dueDate"><br>
 	Time Estimate:
@@ -112,8 +112,9 @@
 		var projectText = document.getElementById("projectField").value;
 		var datePicked = document.getElementById("datePicker").value;
 		var timeEstimate = document.getElementById("timeEstimate").value;
+		var priorityPicked = checkRadioButtons();
 		//var prioritySelect = document.getElementsByClassName("priorityRadioBtn").value;
-		writeNewTask(taskText, 2, projectText, datePicked, timeEstimate)
+		writeNewTask(taskText, priorityPicked, projectText, datePicked, timeEstimate)
 		clearFields();
 	}
 
@@ -122,6 +123,17 @@
 		document.getElementById("taskField").value = "";
 		document.getElementById("datePicker").value = "";
 		document.getElementById("timeEstimate").value = "";
+		for (var i = 1; i <= 4; i++) {
+			document.getElementById("radioBtn" + i).checked = false;
+		}
+	}
+
+	function checkRadioButtons() {
+		for (var i = 1; i <= 4; i++) {
+			if (document.getElementById("radioBtn" + i).checked) {
+				return document.getElementById("radioBtn" + i).value;
+			}
+		}
 	}
 
 </script>
