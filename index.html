@@ -70,7 +70,7 @@
 	Due Date:
 	<input id="datePicker" type="date" name="dueDate"><br>
 	Time Estimate:
-	<input type="text" name="timeEst">
+	<input id="timeEstimate" type="text" name="timeEst">
 
 </form>
 <button onclick="setThings()">Submit</button>
@@ -111,8 +111,9 @@
 		var taskText = document.getElementById("taskField").value;
 		var projectText = document.getElementById("projectField").value;
 		var datePicked = document.getElementById("datePicker").value;
+		var timeEstimate = document.getElementById("timeEstimate").value;
 		//var prioritySelect = document.getElementsByClassName("priorityRadioBtn").value;
-		writeNewTask(taskText, 2, projectText, datePicked, '1 hour')
+		writeNewTask(taskText, 2, projectText, datePicked, timeEstimate)
 		clearFields();
 	}
 
@@ -120,6 +121,7 @@
 		document.getElementById("projectField").value = "";
 		document.getElementById("taskField").value = "";
 		document.getElementById("datePicker").value = "";
+		document.getElementById("timeEstimate").value = "";
 	}
 
 </script>
