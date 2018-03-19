@@ -51,8 +51,8 @@
     		<td><input type="checkbox"></td>
   		</tr>
   		<tr>
-    		<td>Eve</td>
-    		<td>Jackson</td>
+    		<td id="projectShiz">Eve</td>
+    		<td id="taskShiz">Jackson</td>
     		<td>94</td>
   		</tr>
 	</table>
@@ -90,6 +90,22 @@
     messagingSenderId: "81191745304"
   };
   firebase.initializeApp(config);
+
+var taskDataRef = firebase.database().ref("tasks");
+taskDataRef.once("value")
+	.then(function(snapshot) {
+		snapshot.forEach(function(childSnapshot) {
+			var key = childSnapshot.key;
+			var childData = childSnapshot.val();
+
+			var project_val = childSnapshot.val().project;
+			var task_val = childSnapshot.val().taskName;
+			document.getElementById("projectShiz").innerHTML = project_val;
+			document.getElementById("taskShiz").innerHTML = task_val;
+		})
+	})
+
+
 </script>
 
 <script>
