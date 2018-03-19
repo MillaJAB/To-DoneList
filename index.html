@@ -33,7 +33,7 @@
 
 <body>
 
-	<table >
+	<table id="taskTable">
   		<tr>
     		<th>Priority</th>
     		<th>Project</th>
@@ -100,8 +100,9 @@ taskDataRef.once("value")
 
 			var project_val = childSnapshot.val().project;
 			var task_val = childSnapshot.val().taskName;
-			document.getElementById("projectShiz").innerHTML = project_val;
-			document.getElementById("taskShiz").innerHTML = task_val;
+			//document.getElementById("projectShiz").append(project_val);
+			//document.getElementById("taskShiz").innerHTML = task_val;
+			createRow(project_val, task_val);
 		})
 	})
 
@@ -150,6 +151,15 @@ taskDataRef.once("value")
 				return document.getElementById("radioBtn" + i).value;
 			}
 		}
+	}
+
+	function createRow(project, task) {
+		var table = document.getElementById("taskTable");
+		var row = table.insertRow(1);
+		var cell1 = row.insertCell(0);
+		var cell2 = row.insertCell(1);
+		cell1.innerHTML = project;
+		cell2.innerHTML = task;
 	}
 
 </script>
