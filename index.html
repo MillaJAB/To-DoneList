@@ -33,7 +33,7 @@
 
 <body>
 
-	<table id="taskTable">
+	<table id="taskTable" class="centerColumn">
   		<tr>
     		<th>Priority</th>
     		<th>Project</th>
@@ -41,19 +41,6 @@
     		<th>Due</th>
     		<th>Time Est</th>
     		<th>Complete?</th>
-  		</tr>
-  		<tr class="centerColumn">
-    		<td>1</td>
-    		<td>Wordpress</td>
-    		<td>Locate a SEO plugin</td>
-    		<td>3/13</td>
-    		<td>30 min</td>
-    		<td><input type="checkbox"></td>
-  		</tr>
-  		<tr>
-    		<td id="projectShiz">Eve</td>
-    		<td id="taskShiz">Jackson</td>
-    		<td>94</td>
   		</tr>
 	</table>
 
@@ -98,11 +85,14 @@ taskDataRef.once("value")
 			var key = childSnapshot.key;
 			var childData = childSnapshot.val();
 
+			var priority_val = childSnapshot.val().priority;
 			var project_val = childSnapshot.val().project;
 			var task_val = childSnapshot.val().taskName;
+			var due_val = childSnapshot.val().dueDate;
+			var est_val = childSnapshot.val().timeEstimate;
 			//document.getElementById("projectShiz").append(project_val);
 			//document.getElementById("taskShiz").innerHTML = task_val;
-			createRow(project_val, task_val);
+			createRow(priority_val, project_val, task_val, due_val, est_val);
 		})
 	})
 
@@ -130,7 +120,6 @@ taskDataRef.once("value")
 		var datePicked = document.getElementById("datePicker").value;
 		var timeEstimate = document.getElementById("timeEstimate").value;
 		var priorityPicked = checkRadioButtons();
-		//var prioritySelect = document.getElementsByClassName("priorityRadioBtn").value;
 		writeNewTask(taskText, priorityPicked, projectText, datePicked, timeEstimate)
 		clearFields();
 	}
@@ -153,7 +142,7 @@ taskDataRef.once("value")
 		}
 	}
 
-	function createRow(project, task) {
+	function createRow(priority, project, task, due, est) {
 		var table = document.getElementById("taskTable");
 		var row = table.insertRow(1);
 		var cell1 = row.insertCell(0);
@@ -162,8 +151,11 @@ taskDataRef.once("value")
 		var cell4 = row.insertCell(3);
 		var cell5 = row.insertCell(4);
 		var cell6 = row.insertCell(5);
-		cell1.innerHTML = project;
-		cell2.innerHTML = task;
+		cell1.innerHTML = priority;
+		cell2.innerHTML = project;
+		cell3.innerHTML = task;
+		//cell4.innerHTML = dueDate;
+		//cell5.innerHTML = timeEstimate;
 	}
 
 </script>
