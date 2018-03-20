@@ -122,6 +122,7 @@ taskDataRef.once("value")
 		var priorityPicked = checkRadioButtons();
 		writeNewTask(taskText, priorityPicked, projectText, datePicked, timeEstimate)
 		clearFields();
+		window.location.reload(); // Need better way to dynamically add rows without reloading the page completely
 	}
 
 	function clearFields() {
