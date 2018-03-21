@@ -157,7 +157,12 @@ taskDataRef.once("value")
 		cell5.innerHTML = est;
 		var check = document.createElement("input");
 		check.type = "checkbox";
-		cell6.appendChild(check);
+		check.onclick = function() {
+			console.log("that worked");
+		}
+		cell6.appendChild(check) ;
 	}
+
+console.log(document.getElementById("taskTable"));
 
 </script>
