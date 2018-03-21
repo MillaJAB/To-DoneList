@@ -94,7 +94,6 @@ taskDataRef.once("value")
 		})
 	})
 
-
 </script>
 
 <script>
@@ -158,11 +157,13 @@ taskDataRef.once("value")
 		var check = document.createElement("input");
 		check.type = "checkbox";
 		check.onclick = function() {
-			console.log("that worked");
+			document.getElementById("taskTable").deleteRow(checkedRow());
 		}
 		cell6.appendChild(check) ;
 	}
 
-console.log(document.getElementById("taskTable"));
+	function checkedRow() {
+
+	}
 
 </script>
