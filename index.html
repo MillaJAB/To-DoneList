@@ -101,6 +101,7 @@ taskDataRef.once("value")
 </script>
 
 <script>
+	var numRows = 0;
 	// Get a reference to the database service
 	var database = firebase.database();
 
@@ -162,18 +163,24 @@ taskDataRef.once("value")
 		check.src = "uncheckedBox.png";
 		check.onclick = function() {
 			check.src = "checkedBox.png";
-			//document.getElementById("taskTable").deleteRow(checkedRow());
+			checkedRow();
+			document.getElementById("taskTable").deleteRow(checkedRow());
 			/*var jquerynonsense = $('#taskTable');
 			console.log(jquerynonsense);
 			var bullshit = document.getElementById("taskTable").rows[1].cells[5];*/
-			console.log("blah blah hah");
 			//console.log(document.getElementById("taskTable"));
 		}
-		cell6.appendChild(check) ;
+		cell6.appendChild(check);
+		numRows++;
 	}
 
 	function checkedRow() {
-		console.log('write shit');
+		for (var i = 1; i <= numRows; i++) {
+			if (document.getElementById("taskTable").rows[i].cells[5].innerHTML == '<img src="checkedBox.png">') {
+				return i;
+			}
+		}
+		//document.getElementById("taskTable").
 	}
 
 </script>
