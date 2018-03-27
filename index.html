@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
 	<meta content="utf-8" http-equiv="encoding">
 	<style>
@@ -154,11 +155,15 @@ taskDataRef.once("value")
 		cell3.innerHTML = task;
 		cell4.innerHTML = due;
 		cell5.innerHTML = est;
-		var check = document.createElement("input");
-		check.type = "checkbox";
+		var check = document.createElement("img");
+		check.src = "uncheckedBox.png";
 		check.onclick = function() {
 			//document.getElementById("taskTable").deleteRow(checkedRow());
-			console.log(document.getElementById("taskTable").rows[1].cells[5]);
+			/*var jquerynonsense = $('#taskTable');
+			console.log(jquerynonsense);
+			var bullshit = document.getElementById("taskTable").rows[1].cells[5];*/
+			console.log("blah blah hah");
+			//console.log(document.getElementById("taskTable"));
 		}
 		cell6.appendChild(check) ;
 	}
