@@ -163,7 +163,7 @@ taskDataRef.once("value")
 		check.src = "uncheckedBox.png";
 		check.onclick = function() {
 			check.src = "checkedBox.png";
-			checkedRow();
+			removeFromDatabase(checkedRow());
 			document.getElementById("taskTable").deleteRow(checkedRow());
 		}
 		cell6.appendChild(check);
@@ -176,6 +176,13 @@ taskDataRef.once("value")
 				return i;
 			}
 		}
+	}
+
+	function removeFromDatabase(num) {
+		var db = firebase.database().ref('tasks');
+		var toDelete = document.getElementById("taskTable").rows[num].cells[2].innerHTML;
+		console.log(toDelete);
+		db.child(toDelete).remove();
 	}
 
 </script>
