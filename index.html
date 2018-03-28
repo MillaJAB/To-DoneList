@@ -32,6 +32,11 @@
 	img {
 		margin-top: 6px;
 	}
+	#error {
+		color: red;
+		margin-top: 5px;
+		display: none;
+	}
 	</style>
 </head>
 
@@ -47,6 +52,8 @@
     		<th>Complete?</th>
   		</tr>
 	</table>
+
+<div id="error">Please fill out all the fields. It's okay to estimate.</div>
 
 <form>
 	Project:
@@ -123,7 +130,7 @@ taskDataRef.once("value")
 		var timeEstimate = document.getElementById("timeEstimate").value;
 		var priorityPicked = checkRadioButtons();
 		if (taskText == "" || projectText == "" || datePicked == "" || timeEstimate == "" || priorityPicked == "") {
-			
+			document.getElementById("error").style.display = "block";
 		} else {
 			writeNewTask(taskText, priorityPicked, projectText, datePicked, timeEstimate)
 			clearFields();
