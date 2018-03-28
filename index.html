@@ -122,14 +122,13 @@ taskDataRef.once("value")
  	 	});
 	}
 
-// Need to check if things are empty. Bug deletes database if things are left empty
 	function setThings() {
 		var taskText = document.getElementById("taskField").value;
 		var projectText = document.getElementById("projectField").value;
 		var datePicked = document.getElementById("datePicker").value;
 		var timeEstimate = document.getElementById("timeEstimate").value;
 		var priorityPicked = checkRadioButtons();
-		if (taskText == "" || projectText == "" || datePicked == "" || timeEstimate == "" || priorityPicked == "") {
+		if (taskText == "" || projectText == "" || priorityPicked == null) {
 			document.getElementById("error").style.display = "block";
 		} else {
 			writeNewTask(taskText, priorityPicked, projectText, datePicked, timeEstimate)
