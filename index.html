@@ -89,7 +89,7 @@
   };
   firebase.initializeApp(config);
 
-var taskDataRef = firebase.database().ref("tasks");
+var taskDataRef = firebase.database().ref("tasks").orderByChild('priority');
 taskDataRef.once("value")
 	.then(function(snapshot) {
 		snapshot.forEach(function(childSnapshot) {
@@ -191,7 +191,6 @@ taskDataRef.once("value")
 	function removeFromDatabase(num) {
 		var db = firebase.database().ref('tasks');
 		var toDelete = document.getElementById("taskTable").rows[num].cells[2].innerHTML;
-		console.log(toDelete);
 		db.child(toDelete).remove();
 	}
 
