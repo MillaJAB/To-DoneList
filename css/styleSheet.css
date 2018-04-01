@@ -1,0 +1,33 @@
+
+	table, th, td {
+    	border: 1px solid black;
+    	border-collapse: collapse;
+	}
+	th, td {
+    	padding: 3px 10px 7px 10px;
+	}
+	.centerColumn {
+		text-align: center;
+	}
+
+	input {
+		margin-top: 10px;
+	}
+	button {
+		margin-top: 10px;
+	}
+	form {
+		border-style: solid;
+		margin-top: 10px;
+		width: 300px;
+		padding: 10px;
+		padding-left: 25px;
+	}
+	img {
+		margin-top: 6px;
+	}
+	#error {
+		color: red;
+		margin-top: 5px;
+		display: none;
+	}
