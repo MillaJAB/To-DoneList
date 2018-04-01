@@ -24,3 +24,5 @@ taskDataRef.once("value")
 			createRow(priority_val, project_val, task_val, due_val, est_val);
 		})
 	})
+
+	
