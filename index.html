@@ -11,11 +11,11 @@
 
 	<table id="taskTable" class="centerColumn">
   		<tr>
-    		<th>Priority</th>
-    		<th>Project</th>
-    		<th>Task</th>
-    		<th>Due</th>
-    		<th>Time Est</th>
+    		<th id="priorityHeader" onclick="sortTable(PRIORITY)">Priority</th>
+    		<th id="projectHeader" onclick="sortTable(PROJECT)">Project</th>
+    		<th id="taskHeader" onclick="sortTable(TASKNAME)">Task</th>
+    		<th id="dateHeader" onclick="sortTable(DUEDATE)">Due</th>
+    		<th id="estimateHeader" onclick="sortTable(TIMEEST)">Time Est</th>
     		<th>Complete?</th>
   		</tr>
 	</table>
@@ -40,9 +40,6 @@
 </form>
 <button onclick="setThings()">Submit</button>
 
-<p>Click the button to sort the table...in whatever way sortTable() says to:</p>
-<p><button onclick="sortTable()">Sort</button></p>
-
 </body>
 </html>
 
@@ -54,6 +51,11 @@
 
 <script>
 	var numRows = 0;
+	const PRIORITY = 0;
+	const PROJECT = 1;
+	const TASKNAME = 2;
+	const DUEDATE = 3;
+	const TIMEEST = 4;
 	// Get a reference to the database service
 	var database = firebase.database();
 

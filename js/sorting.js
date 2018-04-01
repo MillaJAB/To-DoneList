@@ -1,10 +1,5 @@
 // From https://www.w3schools.com/howto/howto_js_sort_table.asp
-	function sortTable() {
-	  const PRIORITY = 0;
-	  const PROJECT = 1;
-	  const TASKNAME = 2;
-	  const DUEDATE = 3;
-	  const TIMEEST = 4;
+	function sortTable(rowName) {
 	  var table, rows, switching, i, x, y, shouldSwitch;
 	  table = document.getElementById("taskTable");
 	  switching = true;
@@ -21,10 +16,10 @@
 	      shouldSwitch = false;
 	      /*Get the two elements you want to compare,
 	      one from current row and one from the next:*/
-	      x = rows[i].getElementsByTagName("TD")[DUEDATE];
-	      y = rows[i + 1].getElementsByTagName("TD")[DUEDATE];
+	      x = rows[i].getElementsByTagName("TD")[rowName];
+	      y = rows[i + 1].getElementsByTagName("TD")[rowName];
 	      //check if the two rows should switch place:
-	      if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+	      if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
 	        //if so, mark as a switch and break the loop:
 	        shouldSwitch= true;
 	        break;
