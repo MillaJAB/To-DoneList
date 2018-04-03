@@ -18,6 +18,10 @@
 	      one from current row and one from the next:*/
 	      x = rows[i].getElementsByTagName("TD")[rowName];
 	      y = rows[i + 1].getElementsByTagName("TD")[rowName];
+
+	      console.log(getTodaysDate());
+	      var biz = rows[1].getElementsByTagName("TD")[DUEDATE].innerHTML;
+
 	      //check if the two rows should switch place:
 	      if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
 	        //if so, mark as a switch and break the loop:
@@ -28,8 +32,26 @@
 	    if (shouldSwitch) {
 	      /*If a switch has been marked, make the switch
 	      and mark that a switch has been done:*/
-	      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+	      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]); //inserts the y row before the x row
 	      switching = true;
 	    }
 	  }
+	}
+
+	function getTodaysDate() {
+		var today = new Date();
+	    var dd = today.getDay();
+		var mm = today.getMonth()+1; //January is 0!
+		var yyyy = today.getFullYear();
+
+		if(dd<10) {
+   			 dd = '0'+dd
+		} 
+
+		if(mm<10) {
+		    mm = '0'+mm
+		} 
+
+		today = mm + '/' + dd + '/' + yyyy;
+		return today;
 	}
