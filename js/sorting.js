@@ -22,6 +22,8 @@
 	      console.log(getTodaysDate());
 	      var biz = rows[1].getElementsByTagName("TD")[DUEDATE].innerHTML;
 
+	      console.log(biz < getTodaysDate());
+
 	      //check if the two rows should switch place:
 	      if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
 	        //if so, mark as a switch and break the loop:
@@ -40,18 +42,19 @@
 
 	function getTodaysDate() {
 		var today = new Date();
-	    var dd = today.getDay();
+	    var dd = today.getDay()+1;
 		var mm = today.getMonth()+1; //January is 0!
 		var yyyy = today.getFullYear();
 
+		//Adds 0 to date, making it always a two digit number
 		if(dd<10) {
    			 dd = '0'+dd
 		} 
 
 		if(mm<10) {
 		    mm = '0'+mm
-		} 
+		}
 
-		today = mm + '/' + dd + '/' + yyyy;
+		today = yyyy + '-' + mm + '-' + dd;
 		return today;
 	}
