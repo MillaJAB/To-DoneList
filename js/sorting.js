@@ -80,11 +80,14 @@
 		      y = rows[i + 1].getElementsByTagName("TD")[DUEDATE];
 
 		      //check if the two rows should switch place:
-		      if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-		        //if so, mark as a switch and break the loop:
-		        shouldSwitch= true;
-		        break;
-	     	 }
+		      if (x.innerHTML.toLowerCase() != "" && y.innerHTML.toLowerCase() != "") {
+			      if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+			        //if so, mark as a switch and break the loop:
+			        shouldSwitch= true;
+			        break;
+		     	 }
+		     	}
+		     	
 	    }
 	    if (shouldSwitch) {
 	      /*If a switch has been marked, make the switch
